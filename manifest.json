@@ -1,0 +1,41 @@
+{
+  "name": "latchbioagent",
+  "display_name": "LatchBioAgent",
+  "description": "MCP access to LatchBio workspace, workflow, file, and execution metadata with guarded API request helpers for reproducible computational biology workflows.",
+  "version": "0.1.0",
+  "entry_point": "latchbioagent",
+  "repository": "https://github.com/BaranziniLab/LatchBioAgent",
+  "license": "Apache-2.0",
+  "tools_count": 4,
+  "env_vars": [
+    {
+      "key": "LATCHBIO_API_TOKEN",
+      "required": true,
+      "auto_propagate": false,
+      "description": "LatchBio API token",
+      "secret": true
+    },
+    {
+      "key": "LATCHBIO_BASE_URL",
+      "required": false,
+      "auto_propagate": true,
+      "default": "https://api.latch.bio",
+      "description": "LatchBio API base URL",
+      "secret": false
+    },
+    {
+      "key": "LATCHBIO_LOG_LEVEL",
+      "required": false,
+      "auto_propagate": true,
+      "default": "INFO",
+      "description": "Logging level",
+      "secret": false
+    }
+  ],
+  "skills": [
+    {
+      "name": "latchbio-workflows",
+      "description": "Use LatchBioAgent for LatchBio platform-aware scientific workflow inspection and guarded API access."
+    }
+  ]
+}
