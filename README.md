@@ -1,42 +1,37 @@
 # LatchBioAgent
 
-MCP access to LatchBio workspace, workflow, file, and execution metadata with guarded API request helpers for reproducible computational biology workflows.
+Retired. This extension no longer calls Latch and only reports that it is retired. Remove it.
 
-This repository follows the BioRouter `.brxt` extension convention used by `SPOKEAgent` and `UCSFOMOPAgent`: a root `manifest.json`, Python package under `src/`, and optional bundled skills under `skills/`.
+Current version: **0.2.0**
+
+> **Retired.** LatchBioAgent was retired on 2026-11-22 and no longer calls any service. Why: It was a generic API wrapper that was never checked against a real Latch workspace, and no maintained replacement exists today. Use instead: Nothing in BAAM replaces it today. Ask for a rebuild on Latch's own Python SDK if you need it.
+
+This is the final release of a retired Biorouter extension. It replaces every
+earlier tool with one, `latchbio_status`, which shows the notice above. It holds no
+credentials, reads no setting and calls no service. Remove the extension in
+Biorouter once you no longer need the notice.
 
 ## Tools
 
-- `get_latchbioagent_status`: report configured environment variables without revealing secrets.
-- `get_latchbioagent_request_plan`: explain whether an API request is read-only or requires explicit mutation approval.
-- `call_latchbioagent_api`: call a platform API endpoint with write methods blocked unless `allow_mutation=true`.
-- `summarize_latchbioagent_resource`: summarize a JSON export or API payload without making a network call.
+- `latchbio_status`: shows why LatchBioAgent was retired and what to use instead. It calls no service.
 
-## Configuration
+## Bundled skills
 
-| Variable | Required | Secret | Purpose |
-|---|---:|---:|---|
-| `LATCHBIO_API_TOKEN` | true | true | LatchBio API token |
-| `LATCHBIO_BASE_URL` | false | false | LatchBio API base URL |
-| `LATCHBIO_LOG_LEVEL` | false | false | Logging level |
+Every skill an earlier release bundled is kept, and each now says where its content
+moved. An update never deletes a file an earlier version installed, so keeping the
+paths is what replaces the old instructions.
 
-
-## Build
+## Develop and release
 
 ```bash
 uv sync
-scripts/build_brxt.sh
+uv run python -m unittest discover -s tests -v
+uv run python scripts/build_brxt.py
 ```
 
-The bundle is written to `dist/latchbioagent.brxt`.
-
-## Install in BioRouter
-
-```bash
-biorouter extension install dist/latchbioagent.brxt
-```
-
-Add the required secrets with `--secret KEY=value` or configure them in the BioRouter UI.
+Do not edit `src/latchbioagent/_kit/` or `tests/kit_testing/`: they are vendored from the BRXT
+adapter kit in the Biorouter repository (`scripts/brxt-adapter-kit/`).
 
 ## License
 
-Apache-2.0. See `LICENSE`.
+Apache-2.0. See `LICENSE` and `NOTICE`.

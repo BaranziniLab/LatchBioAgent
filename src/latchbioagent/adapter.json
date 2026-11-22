@@ -1,0 +1,14 @@
+{
+  "kit_spec": 1,
+  "service": "latchbio",
+  "service_title": "LatchBio",
+  "kind": "tombstone",
+  "notice": {
+    "status": "retired",
+    "date": "2026-11-22",
+    "reason": "It was a generic API wrapper that was never checked against a real Latch workspace, and no maintained replacement exists today.",
+    "use_instead": "Nothing in BAAM replaces it today. Ask for a rebuild on Latch's own Python SDK if you need it."
+  },
+  "id": "latchbioagent",
+  "display_name": "LatchBioAgent"
+}
